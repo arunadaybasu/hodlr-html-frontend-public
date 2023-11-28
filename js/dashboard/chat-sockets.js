@@ -27,12 +27,11 @@
       }
     });
 
-    socket.on('chat-message-1', (msg) => {
+    socket.on('price-shib-usdt', (msg) => {
       console.log(msg);
       const item = document.createElement('li');
       item.textContent = msg;
       messages.appendChild(item);
-      window.scrollTo(0, document.body.scrollHeight);
     });
 
 	}
