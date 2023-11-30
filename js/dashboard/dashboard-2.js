@@ -6,12 +6,12 @@
  var dzChartlist = function(){
 	
 	var screenWidth = $(window).width(),
-	dataSeriesShibUsdt = [],
-	chartMarketPriceShib,
+	dataSeriesBtcUsdt = [],
+	chartMarketPriceBtc,
 	trigoStrength = 3,
 	iteration = 11,
-	shibMin = 9999999999999,
-	shibMax = 0;
+	btcMin = 9999999999999,
+	btcMax = 0;
 
 	const URL = 'http://localhost:4000';
   const socket = io(URL, {
@@ -23,6 +23,8 @@
   const form = document.getElementById('chat-form-1');
   const input = document.getElementById('chat-input-1');
   const messages = document.getElementById('chat-messages-1');
+  // // const priceDashPrimary = document.getElementById('price-dash-primary');
+  // const priceDashPrimaryPnl = document.getElementById('price-dash-primary-pnl');
 
 
 	function getRandom() {
@@ -93,7 +95,7 @@
 
 		var options = {
 			series: [{
-		    name: 'SHIB/USDT',
+		    name: 'BTC/USDT',
 		    data: []
 			 }],
 			chart: {
@@ -191,7 +193,7 @@
 		  //   }
 		  // },
 		  // subtitle: {
-		  //   text: 'SHIB/USDT',
+		  //   text: 'BTC/USDT',
 		  //   floating: true,
 		  //   align: 'right',
 		  //   offsetY: 0,
@@ -201,177 +203,177 @@
 		  // }
 		};
 
-		chartMarketPriceShib = new ApexCharts(document.querySelector("#marketChart"), options);
-		chartMarketPriceShib.render();
+		chartMarketPriceBtc = new ApexCharts(document.querySelector("#marketChart"), options);
+		chartMarketPriceBtc.render();
 
 	}
 
-	// var realtimeLineChart = function(){
+	var realtimeLineChart = function(){
 
-	// 	var optionsLine = {
-	// 	  chart: {
-	// 	    height: 350,
-	// 	    type: 'line',
-	// 	    stacked: true,
-	// 	    animations: {
-	// 	      enabled: true,
-	// 	      easing: 'linear',
-	// 	      dynamicAnimation: {
-	// 	        speed: 1000
-	// 	      }
-	// 	    },
-	// 	    dropShadow: {
-	// 	      enabled: true,
-	// 	      opacity: 0.3,
-	// 	      blur: 5,
-	// 	      left: -7,
-	// 	      top: 22
-	// 	    },
-	// 	    events: {
-	// 	      animationEnd: function (chartCtx, opts) {
-	// 	        const newData1 = chartCtx.w.config.series[0].data.slice()
-	// 	        newData1.shift()
-	// 	        const newData2 = chartCtx.w.config.series[1].data.slice()
-	// 	        newData2.shift()
+		var optionsLine = {
+		  chart: {
+		    height: 350,
+		    type: 'line',
+		    stacked: true,
+		    animations: {
+		      enabled: true,
+		      easing: 'linear',
+		      dynamicAnimation: {
+		        speed: 1000
+		      }
+		    },
+		    dropShadow: {
+		      enabled: true,
+		      opacity: 0.3,
+		      blur: 5,
+		      left: -7,
+		      top: 22
+		    },
+		    events: {
+		      animationEnd: function (chartCtx, opts) {
+		        const newData1 = chartCtx.w.config.series[0].data.slice()
+		        newData1.shift()
+		        const newData2 = chartCtx.w.config.series[1].data.slice()
+		        newData2.shift()
 
-	// 	        // check animation end event for just 1 series to avoid multiple updates
-	// 	        if (opts.el.node.getAttribute('index') === '0') {
-	// 	          window.setTimeout(function () {
-	// 	            chartCtx.updateOptions({
-	// 	              series: [{
-	// 	                data: newData1
-	// 	              }, {
-	// 	                data: newData2
-	// 	              }],
-	// 	              subtitle: {
-	// 	                text: ''+parseInt(getRandom() * Math.random()).toString(),
-	// 	              }
-	// 	            }, false, false)
-	// 	          }, 300)
-	// 	        }
+		        // check animation end event for just 1 series to avoid multiple updates
+		        if (opts.el.node.getAttribute('index') === '0') {
+		          window.setTimeout(function () {
+		            chartCtx.updateOptions({
+		              series: [{
+		                data: newData1
+		              }, {
+		                data: newData2
+		              }],
+		              subtitle: {
+		                text: ''+parseInt(getRandom() * Math.random()).toString(),
+		              }
+		            }, false, false)
+		          }, 300)
+		        }
 
-	// 	      }
-	// 	    },
-	// 	    toolbar: {
-	// 	      show: false
-	// 	    },
-	// 	    zoom: {
-	// 	      enabled: false
-	// 	    }
-	// 	  },
-	// 	  dataLabels: {
-	// 	    enabled: false
-	// 	  },
-	// 	  stroke: {
-	// 	    curve: 'straight',
-	// 	    width: 5,
-	// 	  },
-	// 	  grid: {
-	// 	    padding: {
-	// 	      left: 0,
-	// 	      right: 0
-	// 	    }
-	// 	  },
-	// 	  markers: {
-	// 	    size: 0,
-	// 	    hover: {
-	// 	      size: 0
-	// 	    }
-	// 	  },
-	// 	  series: [{
-	// 	    name: 'Running',
-	// 	    data: generateMinuteWiseTimeSeries(new Date("12/12/2016 00:20:00").getTime(), 12, {
-	// 	      min: 30,
-	// 	      max: 110
-	// 	    })
-	// 	  }, {
-	// 	    name: 'Waiting',
-	// 	    data: generateMinuteWiseTimeSeries(new Date("12/12/2016 00:20:00").getTime(), 12, {
-	// 	      min: 30,
-	// 	      max: 110
-	// 	    })
-	// 	  }],
-	// 	  xaxis: {
-	// 	    type: 'datetime',
-	// 	    range: 2700000
-	// 	  },
-	// 	  title: {
-	// 	    text: 'Processes',
-	// 	    align: 'left',
-	// 	    style: {
-	// 	      fontSize: '12px'
-	// 	    }
-	// 	  },
-	// 	  subtitle: {
-	// 	    text: 'Realtime',
-	// 	    floating: true,
-	// 	    align: 'right',
-	// 	    offsetY: 0,
-	// 	    style: {
-	// 	      fontSize: '22px'
-	// 	    }
-	// 	  },
-	// 	  legend: {
-	// 	    show: true,
-	// 	    floating: true,
-	// 	    horizontalAlign: 'left',
-	// 	    onItemClick: {
-	// 	      toggleDataSeries: false
-	// 	    },
-	// 	    position: 'top',
-	// 	    offsetY: -28,
-	// 	    offsetX: 60
-	// 	  },
-	// 	}
+		      }
+		    },
+		    toolbar: {
+		      show: false
+		    },
+		    zoom: {
+		      enabled: false
+		    }
+		  },
+		  dataLabels: {
+		    enabled: false
+		  },
+		  stroke: {
+		    curve: 'straight',
+		    width: 5,
+		  },
+		  grid: {
+		    padding: {
+		      left: 0,
+		      right: 0
+		    }
+		  },
+		  markers: {
+		    size: 0,
+		    hover: {
+		      size: 0
+		    }
+		  },
+		  series: [{
+		    name: 'Running',
+		    data: generateMinuteWiseTimeSeries(new Date("12/12/2016 00:20:00").getTime(), 12, {
+		      min: 30,
+		      max: 110
+		    })
+		  }, {
+		    name: 'Waiting',
+		    data: generateMinuteWiseTimeSeries(new Date("12/12/2016 00:20:00").getTime(), 12, {
+		      min: 30,
+		      max: 110
+		    })
+		  }],
+		  xaxis: {
+		    type: 'datetime',
+		    range: 2700000
+		  },
+		  title: {
+		    text: 'Processes',
+		    align: 'left',
+		    style: {
+		      fontSize: '12px'
+		    }
+		  },
+		  subtitle: {
+		    text: 'Realtime',
+		    floating: true,
+		    align: 'right',
+		    offsetY: 0,
+		    style: {
+		      fontSize: '22px'
+		    }
+		  },
+		  legend: {
+		    show: true,
+		    floating: true,
+		    horizontalAlign: 'left',
+		    onItemClick: {
+		      toggleDataSeries: false
+		    },
+		    position: 'top',
+		    offsetY: -28,
+		    offsetX: 60
+		  },
+		}
 
-	// 	var chartLine = new ApexCharts(
-	// 	  document.querySelector("#realtimeLineChart1"),
-	// 	  optionsLine
-	// 	);
-	// 	chartLine.render();
+		var chartLine = new ApexCharts(
+		  document.querySelector("#realtimeLineChart1"),
+		  optionsLine
+		);
+		chartLine.render();
 
-	// 	window.setInterval(function () {
+		window.setInterval(function () {
 
-	// 	  iteration++;
+		  iteration++;
 
-	// 	  chartLine.updateSeries([{
-	// 	    data: [...chartLine.w.config.series[0].data,
-	// 	      [
-	// 	        chartLine.w.globals.maxX + 300000,
-	// 	        getRandom()
-	// 	      ]
-	// 	    ]
-	// 	  },
-	// 	  {
-	// 	    data: [...chartLine.w.config.series[1].data,
-	// 	      [
-	// 	        chartLine.w.globals.maxX + 300000,
-	// 	        getRandom()
-	// 	      ]
-	// 	    ]
-	// 	  }]);
+		  chartLine.updateSeries([{
+		    data: [...chartLine.w.config.series[0].data,
+		      [
+		        chartLine.w.globals.maxX + 300000,
+		        getRandom()
+		      ]
+		    ]
+		  },
+		  {
+		    data: [...chartLine.w.config.series[1].data,
+		      [
+		        chartLine.w.globals.maxX + 300000,
+		        getRandom()
+		      ]
+		    ]
+		  }]);
 
-	// 	}, 3000);
+		}, 3000);
 
-	// }
+	}
 
-	// socket.on('price-shib-usdt-init', (msg) => {
+	// socket.on('price-btc-usdt-init', (msg) => {
 
   //   console.log(msg);
 
   //   for( var i = 0; i < msg.length; i++)
   //   {
-  //   	dataSeriesShibUsdt.push(msg[i].result.price);
-  //   	if (parseFloat(msg[i].result.price) < shibMin)
-  //   		shibMin = parseFloat(msg[i].result.price);
-  //   	if (parseFloat(msg[i].result.price) > shibMax)
-  //   		shibMax = parseFloat(msg[i].result.price);
+  //   	dataSeriesBtcUsdt.push(msg[i].result.price);
+  //   	if (parseFloat(msg[i].result.price) < btcMin)
+  //   		btcMin = parseFloat(msg[i].result.price);
+  //   	if (parseFloat(msg[i].result.price) > btcMax)
+  //   		btcMax = parseFloat(msg[i].result.price);
   //   }
-  //   console.log(shibMin, shibMax);
+  //   console.log(btcMin, btcMax);
 
 	// 	var flotRealtime1 = function(){
 
-	// 		var plot4 = $.plot('#flotRealtime1', dataSeriesShibUsdt, {
+	// 		var plot4 = $.plot('#flotRealtime1', dataSeriesBtcUsdt, {
 	// 			colors: ['#2258BF'],
 	// 			series: {
 	// 				lines: {
@@ -412,12 +414,12 @@
 	// 		// 	setTimeout(update_plot4, updateInterval);
 	// 		// }
 
-	//     // plot4.setData(dataSeriesShibUsdt);
+	//     // plot4.setData(dataSeriesBtcUsdt);
 	// 		plot4.draw();
 	    
-	// 		// chartMarketPriceShib.updateSeries([{
-	// 	  //   name: 'SHIB/USDT',
-	// 		// 	data: dataSeriesShibUsdt
+	// 		// chartMarketPriceBtc.updateSeries([{
+	// 	  //   name: 'BTC/USDT',
+	// 		// 	data: dataSeriesBtcUsdt
 	// 	  // }]);
 
 	// 	}
@@ -439,6 +441,7 @@
 			navText: ['', ''],
 		});	
 	}
+
 	var carouselReview = function(){
 		jQuery('.testimonial-two').owlCarousel({
 			loop:true,
@@ -473,62 +476,46 @@
 		})
 	}
 
-	socket.on('price-shib-usdt-init', async (msg) => {
+	socket.on('price-btc-usdt-init', async (msg) => {
 
     console.log(msg);
 
     for( var i = 0; i < msg.length; i++)
     {
-    	dataSeriesShibUsdt.push( [msg[i].timestamp, msg[i].result.price] );
-    	if (parseFloat(msg[i].result.price) < shibMin)
-    		shibMin = parseFloat(msg[i].result.price);
-    	if (parseFloat(msg[i].result.price) > shibMax)
-    		shibMax = parseFloat(msg[i].result.price);
+    	dataSeriesBtcUsdt.push( [msg[i].timestamp, msg[i].result.price] );
+    	if (parseFloat(msg[i].result.price) < btcMin)
+    		btcMin = parseFloat(msg[i].result.price);
+    	if (parseFloat(msg[i].result.price) > btcMax)
+    		btcMax = parseFloat(msg[i].result.price);
     }
-    console.log(shibMin, shibMax);
+    console.log(btcMin, btcMax);
 
-    // plot4.setData([dataSeriesShibUsdt]);
+    // plot4.setData([dataSeriesBtcUsdt]);
 		// plot4.draw();
     
-		await chartMarketPriceShib.updateSeries([{
-			data: dataSeriesShibUsdt
-	  }]);
+		// await chartMarketPriceBtc.updateSeries([{
+		// 	data: dataSeriesBtcUsdt
+	  // }]);
 
   });
 
-	socket.on('price-shib-usdt', async (msg) => {
+	socket.on('price-btc-usdt', async (msg) => {
 
     console.log(msg);
 
-    dataSeriesShibUsdt.push( [msg.timestamp, msg.result.price] );
+    dataSeriesBtcUsdt.push( [msg.timestamp, msg.result.price] );
 
-    for( var i = 0; i < dataSeriesShibUsdt.length; i++)
+    for( var i = 0; i < dataSeriesBtcUsdt.length; i++)
     {
-    	if (parseFloat(dataSeriesShibUsdt[i][1]) < shibMin)
-    		shibMin = parseFloat(dataSeriesShibUsdt[i][1]);
-    	if (parseFloat(dataSeriesShibUsdt[i][1]) > shibMax)
-    		shibMax = parseFloat(dataSeriesShibUsdt[i][1]);
+    	if (parseFloat(dataSeriesBtcUsdt[i][1]) < btcMin)
+    		btcMin = parseFloat(dataSeriesBtcUsdt[i][1]);
+    	if (parseFloat(dataSeriesBtcUsdt[i][1]) > btcMax)
+    		btcMax = parseFloat(dataSeriesBtcUsdt[i][1]);
     }
-    console.log(shibMin, shibMax);
-    console.log(dataSeriesShibUsdt);
+    console.log(btcMin, btcMax);
+    // console.log(dataSeriesBtcUsdt);
 
-    // dataSeriesShibUsdt.push( [msg.timestamp, parseFloat(msg.result.price)] );
-    // dataSeriesShibUsdt.shift();
-		
-		// chartMarketPriceShib.updateSeries([{
-		// 	data: dataSeriesShibUsdt
-	  // }]);
-
-	  await chartMarketPriceShib.updateOptions({
-			series: [{
-		    name: 'SHIB/USDT',
-		    data: dataSeriesShibUsdt
-			}],
-			yaxis: {
-			  min: shibMin,
-			  max: shibMax
-			}
-		});
+    $("#price-dash-primary").html(parseFloat(msg.result.price).toFixed(2));
 
   });
 
@@ -549,7 +536,7 @@
 			load: function(){
 
 				currentChart();
-				marketChart();
+				// marketChart();
 				recentContact();
 				carouselReview();
 				// realtimeLineChart();
@@ -564,6 +551,28 @@
 	}();
 
 	jQuery(document).ready(function(){
+
+		// window.setInterval(function () {
+			// setTimeout(function(){
+
+			//   $.ajax({
+			//   	url: "http://localhost:8000/dbrecords/price-btc-usdt",
+			//   	async: true,
+			//   	success: function(resultPrice){
+
+			//   		// for (var i = 0; i < resultPrice.length)
+			//   		// {
+
+			//   		// }
+			//   		console.log(resultPrice.result[0].result.price);
+		  //     	$("#price-dash-primary").html(resultPrice.result[0].result.price);
+
+		  //   	}
+		  //   });
+
+			// }, 3000);
+		// }, 30000);
+
 	});
 		
 	jQuery(window).on('load',function(){
