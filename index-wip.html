@@ -952,21 +952,21 @@
         <div class="content-body">
             <!-- row -->
 			<div class="container-fluid">
-				<div class="mb-sm-4 d-flex flex-wrap align-items-center text-head">
-					<h2 class="font-w600 mb-2 me-auto">Dashboard</h2>
-					<!-- <div class="weather-btn mb-2">
-						<span class="fs-22 font-w600 d-flex"><i class="fa fa-cloud me-3 ms-3"></i>21</span>
-						<select class="form-control style-3 default-select">
-							<option>Medan, IDN</option>
-							<option>Jakarta, IDN</option>
-							<option>Surabaya, IDN</option>
-						</select>
+				<div class="row py-2">
+					<div class="col-xl-6 col-xxl-6 col-sm-6">
+						<h2 class="font-w600 mb-2">Dashboard</h2>
 					</div>
-					<a href="javascript:void(0);" class="btn btn-primary mb-2 rounded"><i class="las la-calendar scale5 me-3"></i>Filter Periode</a> -->
-					<h5 class="mb-0">
-						Last Updated: <span class="price-dash-primary-time"></span>
-					</h5>
-				</div>	
+					<div class="col-xl-3 col-xxl-3 col-sm-3">
+						<h5 class="mb-0 text-center">
+							Investment Entry Date: <span id="og-dash-primary-date">10/12/23 11:11:11</span>
+						</h5>
+					</div>
+					<div class="col-xl-3 col-xxl-3 col-sm-3">
+						<h5 class="mb-0 text-center">
+							Last Updated: <span class="price-dash-primary-time"></span>
+						</h5>
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-xl-3 col-xxl-6 col-sm-6">
 						<div class="card">
@@ -1005,10 +1005,10 @@
 										<span id="entry-dash-primary-pnl-p" class="text-success me-1">3.67%</span> PNL/Day
 									</h2>
 									<p class="mb-0">
-										$ <span id="entry-dash-primary-pnl">0.00</span> PNL/USDT
+										$ <span id="entry-dash-primary-profit" class="text-success me-1">0.00</span> Total Profit
 									</p>
 									<p class="mb-0">
-										From: <span id="entry-dash-primary-date-start"></span>
+										$ <span id="entry-dash-primary-profit" class="text-danger me-1">0.00</span> Total Loss
 									</p>
 								</div>
 							</div>
@@ -1017,24 +1017,19 @@
 					<div class="col-xl-3 col-xxl-6 col-sm-6">
 						<div class="card">
 							<div class="card-body d-flex">
-								<div class="icon me-3">
-									<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<circle cx="30" cy="30" r="30" fill="white"/>
-										<path d="M30.5438 0.00501883C13.9681 -0.294993 0.305031 12.893 0.00501883 29.4562C-0.294993 46.0194 12.893 59.695 29.4562 59.995C46.0194 60.295 59.695 47.1069 59.995 30.5313C60.295 13.9681 47.1069 0.292531 30.5438 0.00501883ZM29.5562 54.3697C16.1182 54.1197 5.38024 42.9943 5.63025 29.5562C5.86776 16.1182 16.9932 5.38024 30.4313 5.61775C43.8818 5.86776 54.6072 16.9932 54.3697 30.4313C54.1322 43.8693 42.9943 54.6072 29.5562 54.3697Z" fill="#627EEA"/>
-										<path d="M30.3963 8.12285C18.3333 7.91034 8.34536 17.5482 8.13285 29.6112C7.90784 41.6617 17.5457 51.6496 29.6087 51.8746C41.6717 52.0871 51.6596 42.4492 51.8721 30.3988C52.0846 18.3358 42.4592 8.34786 30.3963 8.12285ZM30.0025 14.3581L36.954 26.7599L30.61 23.2297C30.2312 23.0197 29.7725 23.0197 29.3937 23.2297L23.0497 26.7599L30.0025 14.3581ZM30.0025 45.6381L23.0497 33.2364L29.3937 36.7665C29.5825 36.8715 29.7925 36.924 30.0012 36.924C30.21 36.924 30.42 36.8715 30.6088 36.7665L36.9528 33.2364L30.0025 45.6381ZM30.0025 34.2427L22.3722 29.9975L30.0025 25.7523L37.6315 29.9975L30.0025 34.2427Z" fill="#627EEA"/>
-									</svg>
-								</div>
 								<div>
-									<h2 class="invoice-num">$168,331.09</h2>
-									<p class="mb-0">
+									<h2 class="invoice-num">
 										<svg width="21" height="14" viewBox="0 0 21 14" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path d="M1 1C1.91797 2.08433 4.89728 5.27228 6.5 7L12.5 4L19.5 13" stroke="#F04444" stroke-width="2" stroke-linecap="round"/>
 										</svg>
-
-										<span class="text-danger me-1">45%</span> This week
+										<span id="current-dash-primary-supply" class="text-danger me-1">1000.09</span> BTC
+									</h2>
+									<p class="mb-0">
+										<span class="text-danger me-1">1000.80</span> Loss
 									</p>
-									
-
+									<p class="mb-0">
+										From entry at <span id="og-dash-primary-supply">2342.89</span> BTC
+									</p>
 								</div>
 							</div>
 						</div>
@@ -1042,24 +1037,19 @@
 					<div class="col-xl-3 col-xxl-6 col-sm-6">
 						<div class="card">
 							<div class="card-body d-flex">
-								<div class="icon me-3">
-									<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<circle cx="30" cy="30" r="30" fill="white"/>
-										<path d="M30.5438 0.00501883C13.9681 -0.294993 0.305031 12.893 0.00501883 29.4562C-0.294993 46.0194 12.893 59.695 29.4562 59.995C46.0194 60.295 59.695 47.1069 59.995 30.5313C60.295 13.9681 47.1069 0.292531 30.5438 0.00501883ZM29.5562 54.3697C16.1182 54.1197 5.38024 42.9943 5.63025 29.5562C5.86776 16.1182 16.9932 5.38024 30.4313 5.61775C43.8818 5.86776 54.6072 16.9932 54.3697 30.4313C54.1322 43.8693 42.9943 54.6072 29.5562 54.3697Z" fill="#345D9D"/>
-										<path d="M30.3963 8.12285C18.3333 7.91034 8.34536 17.5482 8.13285 29.6112C7.90784 41.6617 17.5457 51.6496 29.6087 51.8746C41.6717 52.0871 51.6596 42.4492 51.8721 30.3988C52.0846 18.3358 42.4592 8.34786 30.3963 8.12285ZM39.4091 42.6993H19.5083L21.9459 29.2112L19.1208 29.7987V27.4986L22.3709 26.8111L24.4835 15.2106H32.4213L30.6213 25.086L33.3964 24.4985V26.7986L30.1962 27.4611L28.3462 37.6616H40.8842L39.4091 42.6993Z" fill="#345D9D"/>
-									</svg>
-								</div>
 								<div>
-									<h2 class="invoice-num">$7,784</h2>
-									<p class="mb-0">
+									<h2 class="invoice-num">
 										<svg width="21" height="14" viewBox="0 0 21 14" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path d="M1 1C1.91797 2.08433 4.89728 5.27228 6.5 7L12.5 4L19.5 13" stroke="#F04444" stroke-width="2" stroke-linecap="round"/>
 										</svg>
-
-										<span class="text-danger me-1">45%</span> This week
+										$ <span id="current-dash-primary-supply" class="text-danger me-1">1000.09</span>
+									</h2>
+									<p class="mb-0">
+										$ <span class="text-danger me-1">1000.80</span> Loss
 									</p>
-									
-
+									<p class="mb-0">
+										From entry at $ <span id="og-dash-primary-supply">2342.89</span> USDT
+									</p>
 								</div>
 							</div>
 						</div>
