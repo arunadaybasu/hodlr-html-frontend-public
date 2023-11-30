@@ -537,15 +537,45 @@
   socket.on('current-dash-primary', async (msg) => {
   	console.log(msg);
   	var currentValue = parseFloat((msg.quantity*msg.price)).toFixed(2);
-  	$("#current-dash-primary-supply").html(parseFloat(msg.quantity).toFixed(3));
+  	$("#current-dash-primary-supply").html(parseFloat(msg.quantity).toFixed(8));
   	$("#current-dash-primary-value").html(currentValue);
   });
 
   socket.on('og-dash-primary', async (msg) => {
   	console.log(msg);
   	var ogValue = parseFloat((msg.quantity*msg.price)).toFixed(2);
-  	$("#og-dash-primary-supply").html(parseFloat(msg.quantity).toFixed(6));
+  	$("#og-dash-primary-supply").html(parseFloat(msg.quantity).toFixed(8));
   	$("#og-dash-primary-value").html(ogValue);
+  });
+
+  socket.on('current-dash-primary-pnl', async (msg) => {
+  	console.log(msg);
+  	if (msg.pnltype == 'profit')
+  	{
+  		$("#current-dash-primary-pnl").html(
+  			'<span class="text-success me-1">'
+  			+ parseFloat(msg.pnl).toFixed(8)
+  			+ '</span> Profit'
+  		);
+  		$("#current-dash-primary-pnl-usdt").html(
+  			'$ <span class="text-success me-1">'
+  			+ parseFloat(msg.pnlusdt).toFixed(2)
+  			+ '</span> Profit'
+  		);
+  	}
+  	else
+  	{
+  		$("#current-dash-primary-pnl").html(
+  			'<span class="text-danger me-1">'
+  			+ parseFloat(msg.pnl).toFixed(8)
+  			+ '</span> Loss'
+  		);
+  		$("#current-dash-primary-pnl-usdt").html(
+  			'$ <span class="text-danger me-1">'
+  			+ parseFloat(msg.pnlusdt).toFixed(2)
+  			+ '</span> Loss'
+  		);
+  	}
   });
 
 
