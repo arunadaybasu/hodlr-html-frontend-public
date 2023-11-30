@@ -534,6 +534,22 @@
 
   });
 
+  socket.on('current-dash-primary', async (msg) => {
+  	console.log(msg);
+  	var currentValue = parseFloat((msg.quantity*msg.price)).toFixed(2);
+  	$("#current-dash-primary-supply").html(parseFloat(msg.quantity).toFixed(3));
+  	$("#current-dash-primary-value").html(currentValue);
+  });
+
+  socket.on('og-dash-primary', async (msg) => {
+  	console.log(msg);
+  	var ogValue = parseFloat((msg.quantity*msg.price)).toFixed(2);
+  	$("#og-dash-primary-supply").html(parseFloat(msg.quantity).toFixed(6));
+  	$("#og-dash-primary-value").html(ogValue);
+  });
+
+
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (input.value) {
