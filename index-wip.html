@@ -954,7 +954,7 @@
 			<div class="container-fluid">
 				<div class="mb-sm-4 d-flex flex-wrap align-items-center text-head">
 					<h2 class="font-w600 mb-2 me-auto">Dashboard</h2>
-					<div class="weather-btn mb-2">
+					<!-- <div class="weather-btn mb-2">
 						<span class="fs-22 font-w600 d-flex"><i class="fa fa-cloud me-3 ms-3"></i>21</span>
 						<select class="form-control style-3 default-select">
 							<option>Medan, IDN</option>
@@ -962,7 +962,10 @@
 							<option>Surabaya, IDN</option>
 						</select>
 					</div>
-					<a href="javascript:void(0);" class="btn btn-primary mb-2 rounded"><i class="las la-calendar scale5 me-3"></i>Filter Periode</a>
+					<a href="javascript:void(0);" class="btn btn-primary mb-2 rounded"><i class="las la-calendar scale5 me-3"></i>Filter Periode</a> -->
+					<h5 class="mb-0">
+						Last Updated: <span class="price-dash-primary-time"></span>
+					</h5>
 				</div>	
 				<div class="row">
 					<div class="col-xl-3 col-xxl-6 col-sm-6">
@@ -978,16 +981,12 @@
 									</svg>
 								</div>
 								<div>
-									<h2 class="invoice-num">$ <span id="price-dash-primary">0.00</span></h2>
-									<h4>in BTC/USDT</h4>
-									<p class="mb-0 invoice-num1">
-										<svg width="21" height="14" viewBox="0 0 21 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path d="M1 13C1.91797 11.9157 4.89728 8.72772 6.5 7L12.5 10L19.5 1" stroke="#13B440" stroke-width="2" stroke-linecap="round"/>
-										</svg>
-										<span id="price-dash-primary-pnl" class="text-success me-1">45%</span> This week
-									</p>
-									
-
+									<h2 class="invoice-num">
+										$ <span id="price-dash-primary">0.00</span>
+									</h2>
+									<h4 class="mb-0">
+										in BTC/USDT
+									</h4>
 								</div>
 							</div>
 						</div>
@@ -995,26 +994,13 @@
 					<div class="col-xl-3 col-xxl-6 col-sm-6">
 						<div class="card">
 							<div class="card-body d-flex">
-								<div class="icon me-3">
-									<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<g opacity="0.99">
-										<circle cx="30" cy="30.0001" r="30" fill="white"/>
-										<path d="M30.5438 0.00514091C13.9681 -0.294871 0.305031 12.8932 0.00501883 29.4563C-0.294993 46.0195 12.893 59.6951 29.4562 59.9951C46.0194 60.2951 59.695 47.1071 59.995 30.5314C60.295 13.9682 47.1069 0.292653 30.5438 0.00514091ZM29.5562 54.3699C16.1182 54.1198 5.38024 42.9944 5.63025 29.5563C5.86776 16.1183 16.9932 5.38036 30.4313 5.61787C43.8818 5.86788 54.6072 16.9933 54.3697 30.4314C54.1322 43.8694 42.9943 54.6074 29.5562 54.3699Z" fill="#FF6600"/>
-										<path d="M30.3938 8.11797C18.3308 7.90546 8.34286 17.5434 8.13035 29.6063C8.0591 33.4015 8.97038 36.9904 10.623 40.1355H17.4995V18.6021C17.4995 17.2858 19.2883 16.8671 19.8696 18.0484L30 38.563L40.1304 18.0496C40.7117 16.8671 42.5005 17.2858 42.5005 18.6021V40.1355H49.3558C50.8933 37.2129 51.8084 33.9128 51.8696 30.3939C52.0821 18.3309 42.4567 8.34298 30.3938 8.11797Z" fill="#FF6600"/>
-										<path d="M40.0004 41.3856V23.9574L31.12 41.9393C30.7 42.7931 29.2987 42.7931 28.8787 41.9393L19.9996 23.9574V41.3856C19.9996 42.0756 19.4408 42.6356 18.7495 42.6356H12.1855C16.0744 48.0996 22.3972 51.7347 29.6062 51.8697C37.1028 52.0023 43.793 48.3271 47.8395 42.6356H41.2504C40.5592 42.6356 40.0004 42.0756 40.0004 41.3856Z" fill="#FF6600"/>
-										</g>
-									</svg>
-								</div>
 								<div>
-									<h2 class="invoice-num">$22,567</h2>
-									<p class="mb-0">
-										<svg width="21" height="14" viewBox="0 0 21 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path d="M1 13C1.91797 11.9157 4.89728 8.72772 6.5 7L12.5 10L19.5 1" stroke="#13B440" stroke-width="2" stroke-linecap="round"/>
-										</svg>
-										<span class="text-success me-1">45%</span> This week
-									</p>
-									
-
+									<h2 class="invoice-num">
+										<span class="text-success me-1">MAX</span>$ <span id="price-dash-primary-max">0.00</span>
+									</h2>
+									<h4 class="mb-0">
+										<span class="text-danger me-1">MIN</span>$ <span id="price-dash-primary-min">0.00</span>
+									</h4>
 								</div>
 							</div>
 						</div>

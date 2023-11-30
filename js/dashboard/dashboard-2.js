@@ -502,6 +502,7 @@
 	socket.on('price-btc-usdt', async (msg) => {
 
     console.log(msg);
+    var timestampBtc = new Date(msg.timestamp);
 
     dataSeriesBtcUsdt.push( [msg.timestamp, msg.result.price] );
 
@@ -514,8 +515,22 @@
     }
     console.log(btcMin, btcMax);
     // console.log(dataSeriesBtcUsdt);
-
     $("#price-dash-primary").html(parseFloat(msg.result.price).toFixed(2));
+    $("#price-dash-primary-max").html(btcMax.toFixed(2));
+    $("#price-dash-primary-min").html(btcMin.toFixed(2));
+    $(".price-dash-primary-time").html(
+    	timestampBtc.getDate()
+    	+'/'
+    	+timestampBtc.getMonth()
+    	+'/'
+    	+timestampBtc.getFullYear()
+    	+' '
+    	+timestampBtc.getHours()
+    	+':'
+    	+timestampBtc.getMinutes()
+    	+':'
+    	+timestampBtc.getSeconds()
+    );
 
   });
 
